@@ -19,7 +19,7 @@ with st.expander("📂 View Raw Cleaned Data"):
 df['Order Date'] = pd.to_datetime(df['Order Date'])
 
 
-monthly_sales = df.resample('M', on='Order Date')['Sales'].sum().reset_index()
+monthly_sales = df.resample('ME', on='Order Date')['Sales'].sum().reset_index()
 st.subheader("Monthly Sales Trend")
 fig = px.area(monthly_sales, x='Order Date', y='Sales', 
               title="Sales Performance Over Time",
