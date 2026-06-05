@@ -47,7 +47,7 @@ selected_category = st.selectbox("Select a Category to view its profit timeline:
 
 category_df = df[df['Category'] == selected_category]
 
-monthly_cat_profit = category_df.resample('M', on='Order Date')['Profit'].sum().reset_index()
+monthly_cat_profit = category_df.resample('ME', on='Order Date')['Profit'].sum().reset_index()
 
 fig_line_profit = px.line(
     monthly_cat_profit, 
