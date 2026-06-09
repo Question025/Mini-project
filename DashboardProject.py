@@ -33,7 +33,7 @@ tab1, tab2, tab3 = st.tabs([
 
 # Tab 1: Monthly Sales Trend
 with tab1:
-    monthly_sales = df.resample('M', on='Order Date')['Sales'].sum().reset_index()
+    monthly_sales = df.resample('ME', on='Order Date')['Sales'].sum().reset_index()
     fig1 = px.area(monthly_sales, x='Order Date', y='Sales', 
                    title="Sales Performance Over Time", 
                    labels={'Sales': 'Total Revenue', 'Order Date': 'Year'})
@@ -62,7 +62,7 @@ with tab3:
     
     # Filter and construct the timeline dynamically
     category_df = df[df['Category'] == selected_category]
-    monthly_cat_profit = category_df.resample('M', on='Order Date')['Profit'].sum().reset_index()
+    monthly_cat_profit = category_df.resample('ME', on='Order Date')['Profit'].sum().reset_index()
     
     fig3 = px.line(monthly_cat_profit, x='Order Date', y='Profit', 
                               title=f"Monthly Profit for: {selected_category}", 
